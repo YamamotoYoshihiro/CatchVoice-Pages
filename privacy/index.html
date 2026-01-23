@@ -15,6 +15,11 @@
     a { color:#0b57d0; }
     ul { padding-left: 20px; }
     code { background:#f2f2f2; padding: 2px 6px; border-radius: 6px; }
+
+    /* 追加：ページ間ナビ（最小） */
+    .nav { display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; }
+    .pill { display:inline-block; padding:6px 10px; border:1px solid #e5e5e5; border-radius:999px; background:#fff; text-decoration:none; color:#0b57d0; font-size:13px; }
+    .pill:hover { text-decoration:underline; }
   </style>
 </head>
 <body>
@@ -24,6 +29,13 @@
       対象アプリ：<strong><APP_NAME></strong><br/>
       施行日：<strong><EFFECTIVE_DATE></strong>
     </div>
+
+    <!-- 追加：ナビ -->
+    <nav class="nav" aria-label="ページ">
+      <a class="pill" href="../">トップ</a>
+      <a class="pill" href="../support/">サポート</a>
+      <a class="pill" href="./">プライバシー</a>
+    </nav>
   </header>
 
   <main>
@@ -105,7 +117,7 @@
     <h2>10. お問い合わせ</h2>
     <p>
       本ポリシーに関するお問い合わせは、以下までご連絡ください。<br/>
-      <strong>Email：</strong><a href="mailto:yoshihiro.app@gmail.com"><CONTACT_EMAIL></a>
+      <strong>Email：</strong><a href="mailto:yoshihiro.app@gmail.com">yoshihiro.app@gmail.com</a>
     </p>
   </main>
 

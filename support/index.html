@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CatchVoice サポート</title>
+  <style>
+    :root { --fg:#111; --muted:#666; --bg:#fff; --link:#0b57d0; --card:#f6f7f9; --bd:#e6e8ee; }
+    body { margin:0; font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans JP", sans-serif; color:var(--fg); background:var(--bg); line-height:1.7; }
+    a { color:var(--link); text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    header { border-bottom:1px solid var(--bd); background:#fff; }
+    .wrap { max-width:900px; margin:0 auto; padding:20px; }
+    .brand { display:flex; gap:12px; align-items:center; }
+    .brand h1 { font-size:20px; margin:0; }
+    .brand p { margin:2px 0 0; color:var(--muted); font-size:13px; }
+    main { padding:24px 0 60px; }
+    h2 { font-size:18px; margin:28px 0 12px; }
+    h3 { font-size:15px; margin:18px 0 8px; }
+    .grid { display:grid; grid-template-columns:1fr; gap:14px; }
+    @media (min-width: 860px){ .grid { grid-template-columns: 1fr 1fr; } }
+    .card { background:var(--card); border:1px solid var(--bd); border-radius:12px; padding:16px; }
+    .card p, .card ul { margin:8px 0 0; color:#222; }
+    .muted { color:var(--muted); }
+    code { background:#eef1f6; padding:2px 6px; border-radius:6px; }
+    ul { padding-left:18px; }
+    .footer { border-top:1px solid var(--bd); padding-top:16px; margin-top:32px; color:var(--muted); font-size:12px; }
+    .nav { display:flex; gap:14px; flex-wrap:wrap; margin-top:10px; font-size:13px; }
+    .pill { display:inline-block; padding:6px 10px; border:1px solid var(--bd); border-radius:999px; background:#fff; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="brand">
+        <div>
+          <h1>CatchVoice（キャッチボイス） サポート</h1>
+          <p>音声を要約して、話題ごとに整理するアプリ</p>
+        </div>
+      </div>
+      <nav class="nav" aria-label="ページ">
+        <a class="pill" href="../">トップ</a>
+        <a class="pill" href="../privacy/">プライバシーポリシー</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="grid">
+      <section class="card">
+        <h2>お問い合わせ</h2>
+        <p class="muted">不具合報告・ご質問・機能要望はこちらからお願いいたします。</p>
+        <h3>連絡方法</h3>
+        <ul>
+          <!-- ここは必ずあなたの連絡先に置き換えてください -->
+          <li>メール：<a href="mailto:yoshihiro.app@gmail.com">yoshihiro.app@gmail.com</a></li>
+          <!-- GitHub Issues を使う場合は下も有効 -->
+          <!-- <li>GitHub：<a href="https://github.com/YamamotoYoshihiro/CatchVoice/issues">Issues</a></li> -->
+        </ul>
+        <p class="muted">※返信の目安：1〜3営業日（状況により前後する場合があります）</p>
+      </section>
+
+      <section class="card">
+        <h2>不具合報告のテンプレ</h2>
+        <p>再現性の確認に必要な情報です。可能な範囲でご記載ください。</p>
+        <ul>
+          <li>発生日時：</li>
+          <li>端末（例：iPhone 15）：</li>
+          <li>iOSバージョン：</li>
+          <li>アプリのバージョン：</li>
+          <li>発生手順（1,2,3…）：</li>
+          <li>期待した結果：</li>
+          <li>実際の結果（エラーメッセージ等）：</li>
+          <li>補足（スクリーンショット/画面録画があれば）：</li>
+        </ul>
+      </section>
+    </div>
+
+    <section>
+      <h2>よくある質問（FAQ）</h2>
+
+      <h3>Q. 録音データはどこに保存されますか？</h3>
+      <p>
+        原則として、録音・作成したデータはユーザーの端末内に保存されます（アプリの仕様により異なる場合があります）。
+        外部サービス（AI要約等）を利用する場合は、処理のために必要な範囲でデータが送信されることがあります。
+        詳細は <a href="../privacy/">プライバシーポリシー</a> をご確認ください。
+      </p>
+
+      <h3>Q. 要約がうまくいかない／精度が低いです。</h3>
+      <ul>
+        <li>録音環境（騒音、距離、複数人の同時発話）で精度が変動します。</li>
+        <li>短すぎる音声は文脈が不足し、要約が不安定になることがあります。</li>
+        <li>通信状況が不安定だと、AI処理が失敗することがあります。</li>
+      </ul>
+
+      <h3>Q. 退会は必要ですか？</h3>
+      <p>
+        アカウント登録を伴わない設計の場合、退会は不要です。データ削除はアプリ内の削除機能をご利用ください。
+        （実装状況に合わせて文章を調整してください）
+      </p>
+
+      <h3>Q. サブスクリプションの解約方法は？</h3>
+      <p>
+        iOS の「設定」→「Apple Account」→「サブスクリプション」から解約できます。
+      </p>
+    </section>
+
+    <section>
+      <h2>データ削除について</h2>
+      <p>
+        端末内のデータは、アプリ内の削除機能、またはアプリをアンインストールすることで削除されます。
+        外部サービスに送信される処理がある場合の取り扱いは <a href="../privacy/">プライバシーポリシー</a> をご確認ください。
+      </p>
+    </section>
+
+    <div class="footer">
+      <div>最終更新日：2026-01-24</div>
+      <div>© CatchVoice</div>
+    </div>
+  </main>
+</body>
+</html>

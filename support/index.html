@@ -5,29 +5,162 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>CatchVoice サポート</title>
   <style>
-    :root { --fg:#111; --muted:#666; --bg:#fff; --link:#0b57d0; --card:#f6f7f9; --bd:#e6e8ee; }
-    body { margin:0; font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans JP", sans-serif; color:var(--fg); background:var(--bg); line-height:1.7; }
-    a { color:var(--link); text-decoration:none; }
-    a:hover { text-decoration:underline; }
-    header { border-bottom:1px solid var(--bd); background:#fff; }
-    .wrap { max-width:900px; margin:0 auto; padding:20px; }
-    .brand { display:flex; gap:12px; align-items:center; }
-    .brand h1 { font-size:20px; margin:0; }
-    .brand p { margin:2px 0 0; color:var(--muted); font-size:13px; }
-    main { padding:24px 0 60px; }
-    h2 { font-size:18px; margin:28px 0 12px; }
-    h3 { font-size:15px; margin:18px 0 8px; }
-    .grid { display:grid; grid-template-columns:1fr; gap:14px; }
-    @media (min-width: 860px){ .grid { grid-template-columns: 1fr 1fr; } }
-    .card { background:var(--card); border:1px solid var(--bd); border-radius:12px; padding:16px; }
-    .card p, .card ul { margin:8px 0 0; color:#222; }
-    .muted { color:var(--muted); }
-    code { background:#eef1f6; padding:2px 6px; border-radius:6px; }
-    ul { padding-left:18px; }
-    .footer { border-top:1px solid var(--bd); padding-top:16px; margin-top:32px; color:var(--muted); font-size:12px; }
+    :root {
+      --fg:#111;
+      --muted:#666;
+      --bg:#fff;
+      --link:#0b57d0;
+      --card:#f6f7f9;
+      --bd:#e6e8ee;
+    }
+
+    body {
+      margin:0;
+      font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans JP", sans-serif;
+      color:var(--fg);
+      background:var(--bg);
+      line-height:1.7;
+    }
+
+    a {
+      color:var(--link);
+      text-decoration:none;
+    }
+
+    a:hover {
+      text-decoration:underline;
+    }
+
+    header {
+      border-bottom:1px solid var(--bd);
+      background:#fff;
+    }
+
+    .wrap {
+      max-width:900px;
+      margin:0 auto;
+      padding:20px;
+    }
+
+    .brand {
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+
+    .brand h1 {
+      font-size:20px;
+      margin:0;
+    }
+
+    .brand p {
+      margin:2px 0 0;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    main {
+      padding:24px 0 60px;
+    }
+
+    h2 {
+      font-size:18px;
+      margin:28px 0 12px;
+    }
+
+    h3 {
+      font-size:15px;
+      margin:18px 0 8px;
+    }
+
+    .grid {
+      display:grid;
+      grid-template-columns:1fr;
+      gap:14px;
+    }
+
+    @media (min-width: 860px) {
+      .grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .card {
+      background:var(--card);
+      border:1px solid var(--bd);
+      border-radius:12px;
+      padding:16px;
+    }
+
+    .card p,
+    .card ul {
+      margin:8px 0 0;
+      color:#222;
+    }
+
+    .muted {
+      color:var(--muted);
+    }
+
+    code {
+      background:#eef1f6;
+      padding:2px 6px;
+      border-radius:6px;
+    }
+
+    ul {
+      padding-left:18px;
+    }
+
+    .footer {
+      border-top:1px solid var(--bd);
+      padding-top:16px;
+      margin-top:32px;
+      color:var(--muted);
+      font-size:12px;
+    }
+
+    .page-nav {
+      max-width:900px;
+      margin:0 auto;
+      padding:16px 20px 0;
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+
+    .page-nav a {
+      display:inline-block;
+      padding:8px 14px;
+      border:1px solid #d8d8d8;
+      border-radius:999px;
+      background:#f7f7f7;
+      color:var(--link);
+      text-decoration:none;
+      font-size:14px;
+      line-height:1.4;
+    }
+
+    .page-nav a:hover {
+      background:#eeeeee;
+      text-decoration:none;
+    }
+
+    .page-nav a.current {
+      background:#111;
+      color:#fff;
+      border-color:#111;
+    }
   </style>
 </head>
+
 <body>
+  <nav class="page-nav" aria-label="ページナビゲーション">
+    <a href="../">トップ</a>
+    <a class="current" href="./">サポート</a>
+    <a href="../privacy/">プライバシー</a>
+  </nav>
+
   <header>
     <div class="wrap">
       <div class="brand">
@@ -71,12 +204,13 @@
 
     <section>
       <h2>よくある質問（FAQ）</h2>
-　　　　　<h3>Q. 録音データはどこに保存されますか？</h3>
-　　　　　　<p>
-  　　　　　　　原則として、録音・作成したデータはユーザーの端末内に保存されます。
-  　　　　　　　AI要約等の機能を実行した場合に限り、処理のために必要な範囲でデータが外部サービスに送信されます。
-  　　　　　　　詳細は <a href="../privacy/">プライバシーポリシー</a> をご確認ください。
-　　　　　　</p>
+
+      <h3>Q. 録音データはどこに保存されますか？</h3>
+      <p>
+        原則として、録音・作成したデータはユーザーの端末内に保存されます。
+        AI要約等の機能を実行した場合に限り、処理のために必要な範囲でデータが外部サービスに送信されます。
+        詳細は <a href="../privacy/">プライバシーポリシー</a> をご確認ください。
+      </p>
 
       <h3>Q. 要約がうまくいかない／精度が低いです。</h3>
       <ul>
@@ -105,7 +239,7 @@
     </section>
 
     <div class="footer">
-      <div>最終更新日：2026-01-24</div>
+      <div>最終更新日：2026-05-02</div>
       <div>© 2026 CatchVoice</div>
     </div>
   </main>

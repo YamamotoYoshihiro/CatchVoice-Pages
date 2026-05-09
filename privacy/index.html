@@ -32,7 +32,7 @@
           <p>
             本ポリシーは、音声メモ・文字起こし・AI要約・日/週/月/年の振り返り機能に関連する情報の取扱いを説明するものです。
           </p>
-          <div class="hero-actions">
+          <div class="button-row">
             <a class="button primary" href="mailto:yoshihiro.app@gmail.com">お問い合わせ</a>
             <a class="button secondary" href="../support/">サポートページ</a>
           </div>
@@ -48,57 +48,62 @@
     </section>
 
     <section class="section">
-      <h2>1. 収集する情報</h2>
-      <ul>
-        <li><strong>オーディオデータ</strong>：ユーザーが録音する音声</li>
-        <li><strong>生成テキスト</strong>：文字起こし結果、要約、メモ、タイトル、話題分類、キーワード等</li>
-        <li><strong>整理データ</strong>：日/週/月/年のまとめ、ランキング、キーワード頻度等</li>
-        <li><strong>利用状況情報</strong>：AI要約利用回数、利用プラン、購読状態、上限判定に必要な情報</li>
-        <li><strong>識別子情報</strong>：認証・課金確認・利用回数管理に必要な識別子</li>
-        <li><strong>お問い合わせ情報（任意）</strong>：不具合報告時に提供される再現手順、端末/OS情報、画像等</li>
-      </ul>
-      <p class="muted">※氏名・住所・電話番号等の直接的な個人情報の入力は求めませんが、録音内容に含まれた情報は取り扱い対象となる場合があります。</p>
-    </section>
+      <h2>取扱い内容</h2>
+      <div class="policy-list">
+        <article class="faq">
+          <h3>1. 収集する情報</h3>
+          <ul>
+            <li><strong>オーディオデータ</strong>：ユーザーが録音する音声</li>
+            <li><strong>生成テキスト</strong>：文字起こし結果、要約、メモ、タイトル、話題分類、キーワード等</li>
+            <li><strong>整理データ</strong>：日/週/月/年のまとめ、ランキング、キーワード頻度等</li>
+            <li><strong>利用状況情報</strong>：AI要約利用回数、利用プラン、購読状態、上限判定に必要な情報</li>
+            <li><strong>識別子情報</strong>：認証・課金確認・利用回数管理に必要な識別子</li>
+            <li><strong>お問い合わせ情報（任意）</strong>：不具合報告時に提供される再現手順、端末/OS情報、画像等</li>
+          </ul>
+          <p class="muted">※氏名・住所・電話番号等の直接的な個人情報の入力は求めませんが、録音内容に含まれた情報は取り扱い対象となる場合があります。</p>
+        </article>
 
-    <section class="section">
-      <h2>2. 利用目的</h2>
-      <ul>
-        <li>録音・再生・保存など基本機能の提供</li>
-        <li>文字起こし、要約、話題整理、キーワード抽出、振り返りまとめの生成</li>
-        <li>利用プランに応じた機能制限・利用回数制限・購読状態の確認</li>
-        <li>お問い合わせ対応、品質改善、不具合再現・原因調査</li>
-      </ul>
-    </section>
+        <article class="faq">
+          <h3>2. 利用目的</h3>
+          <ul>
+            <li>録音・再生・保存など基本機能の提供</li>
+            <li>文字起こし、要約、話題整理、キーワード抽出、振り返りまとめの生成</li>
+            <li>利用プランに応じた機能制限・利用回数制限・購読状態の確認</li>
+            <li>お問い合わせ対応、品質改善、不具合再現・原因調査</li>
+          </ul>
+        </article>
 
-    <section class="section">
-      <h2>3. 外部送信（第三者提供・委託）</h2>
-      <p>AI要約等を実行した場合に限り、処理に必要な範囲でデータを外部サービスへ送信する場合があります。</p>
-      <ul>
-        <li><strong>Google Gemini API / Google Cloud</strong>：要約、話題整理、キーワード抽出、各種まとめ生成</li>
-        <li><strong>Firebase Authentication / Google Cloud</strong>：認証、利用回数管理、機能提供制御</li>
-        <li><strong>Apple</strong>：App Store課金、購読状態確認、OS提供機能による音声処理等</li>
-      </ul>
-      <p>送信データの取扱いは、送信先事業者の規約・ポリシーにも従います。</p>
-    </section>
+        <article class="faq">
+          <h3>3. 外部送信（第三者提供・委託）</h3>
+          <p>AI要約等を実行した場合に限り、処理に必要な範囲でデータを外部サービスへ送信する場合があります。</p>
+          <ul>
+            <li><strong>Google Gemini API / Google Cloud</strong>：要約、話題整理、キーワード抽出、各種まとめ生成</li>
+            <li><strong>Firebase Authentication / Google Cloud</strong>：認証、利用回数管理、機能提供制御</li>
+            <li><strong>Apple</strong>：App Store課金、購読状態確認、OS提供機能による音声処理等</li>
+          </ul>
+          <p>送信データの取扱いは、送信先事業者の規約・ポリシーにも従います。</p>
+        </article>
 
-    <section class="section">
-      <h2>4. 保存期間・削除</h2>
-      <ul>
-        <li>録音データ・文字起こし・要約・まとめは、原則として端末内に保存されます。</li>
-        <li>「録音音声を保存」をオフにした場合、文字起こし成功後に音声ファイルは端末内から削除されます。</li>
-        <li>バックアップ対象は文字起こしデータのみで、音声ファイル・要約データは含みません。</li>
-      </ul>
-      <p>アプリ内の削除機能またはアンインストールにより端末内データを削除できます。</p>
-    </section>
+        <article class="faq">
+          <h3>4. 保存期間・削除</h3>
+          <ul>
+            <li>録音データ・文字起こし・要約・まとめは、原則として端末内に保存されます。</li>
+            <li>「録音音声を保存」をオフにした場合、文字起こし成功後に音声ファイルは端末内から削除されます。</li>
+            <li>バックアップ対象は文字起こしデータのみで、音声ファイル・要約データは含みません。</li>
+          </ul>
+          <p>アプリ内の削除機能またはアンインストールにより端末内データを削除できます。</p>
+        </article>
 
-    <section class="section">
-      <h2>5. その他</h2>
-      <ul>
-        <li><strong>広告・トラッキング</strong>：広告配信目的で録音内容や要約内容を収集・利用しません。</li>
-        <li><strong>セキュリティ</strong>：通信の暗号化など合理的な対策を講じます。</li>
-        <li><strong>未成年の利用</strong>：App Store年齢制限および法令に従い、必要に応じて保護者同意のもと利用してください。</li>
-        <li><strong>ポリシー変更</strong>：法令対応や機能変更に伴い改定する場合があります。</li>
-      </ul>
+        <article class="faq">
+          <h3>5. その他</h3>
+          <ul>
+            <li><strong>広告・トラッキング</strong>：広告配信目的で録音内容や要約内容を収集・利用しません。</li>
+            <li><strong>セキュリティ</strong>：通信の暗号化など合理的な対策を講じます。</li>
+            <li><strong>未成年の利用</strong>：App Store年齢制限および法令に従い、必要に応じて保護者同意のもと利用してください。</li>
+            <li><strong>ポリシー変更</strong>：法令対応や機能変更に伴い改定する場合があります。</li>
+          </ul>
+        </article>
+      </div>
     </section>
 
     <div class="footer">

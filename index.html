@@ -3,35 +3,63 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CatchVoice Pages</title>
+  <title>CatchVoice - 音声メモとAI振り返り</title>
   <style>
+    :root {
+      --ink: #0f172a;
+      --muted: #5b6472;
+      --line: #d8e5f6;
+      --paper: #ffffff;
+      --soft: #eef6ff;
+      --accent: #2563eb;
+      --accent-strong: #1d4ed8;
+      --blue: #123a7c;
+      --blue-soft: #e7f0ff;
+      --sky: #0ea5e9;
+      --warm: #f97316;
+      --shadow: 0 18px 50px rgba(37, 99, 235, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans JP", sans-serif;
       line-height: 1.6;
       margin: 0;
-      color: #111;
-      background: #fff;
+      color: var(--ink);
+      background: linear-gradient(180deg, #f5f9ff 0%, #eef6ff 100%);
     }
 
     .wrap {
-      max-width: 760px;
+      max-width: 1080px;
       margin: 0 auto;
-      padding: 32px 20px 48px;
+      padding: 28px 20px 64px;
     }
 
     h1 {
-      font-size: 24px;
-      margin: 0 0 16px;
+      font-size: clamp(32px, 6vw, 56px);
+      line-height: 1.08;
+      letter-spacing: 0;
+      margin: 0 0 8px;
+      white-space: nowrap;
     }
 
     h2 {
-      font-size: 18px;
-      margin: 32px 0 12px;
+      font-size: 24px;
+      line-height: 1.25;
+      letter-spacing: 0;
+      margin: 0 0 14px;
+    }
+
+    h3 {
+      letter-spacing: 0;
     }
 
     p {
       margin: 0 0 16px;
-      color: #333;
+      color: #313642;
     }
 
     ul {
@@ -44,7 +72,7 @@
     }
 
     a {
-      color: #0b57d0;
+      color: var(--accent-strong);
       text-decoration: none;
     }
 
@@ -53,105 +81,663 @@
     }
 
     .lead {
-      font-size: 16px;
+      font-size: 18px;
+      color: #2c3240;
+      max-width: 720px;
+    }
+
+    .title-kana {
+      display: inline-flex;
+      align-items: center;
+      color: var(--accent-strong);
+      background: rgba(37, 99, 235, 0.1);
+      border: 1px solid rgba(37, 99, 235, 0.18);
+      border-radius: 999px;
+      padding: 5px 12px;
+      font-size: 15px;
+      font-weight: 800;
+      margin: 0 0 18px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background:
+        linear-gradient(145deg, rgba(37, 99, 235, 0.18), rgba(14, 165, 233, 0.1) 38%, rgba(255, 255, 255, 0.98) 72%),
+        var(--paper);
+      box-shadow: var(--shadow);
+      padding: clamp(28px, 5vw, 56px);
+      margin: 22px 0 28px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(260px, 360px);
+      gap: 28px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent-strong);
+      background: rgba(37, 99, 235, 0.1);
+      border: 1px solid rgba(37, 99, 235, 0.2);
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      margin: 0 0 18px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 10px 16px;
+      border-radius: 12px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      text-decoration: none;
+    }
+
+    .button.primary {
+      background: linear-gradient(135deg, var(--accent), #0f4fd3);
+      color: #fff;
+      box-shadow: 0 12px 24px rgba(37, 99, 235, 0.22);
+    }
+
+    .button.secondary {
+      background: #fff;
+      color: var(--accent-strong);
+      border-color: rgba(37, 99, 235, 0.2);
+    }
+
+    .button:hover {
+      text-decoration: none;
+      filter: brightness(0.98);
+    }
+
+    .phone-card {
+      position: relative;
+      min-height: 380px;
+      border-radius: 34px;
+      background: linear-gradient(160deg, #0a0d12, #171a21);
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 24px 60px rgba(10, 13, 18, 0.28);
+      padding: 18px;
+      color: #fff;
+    }
+
+    .phone-screen {
+      height: 100%;
+      min-height: 344px;
+      border-radius: 24px;
+      background: #f7f8fb;
+      color: var(--ink);
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .app-mark {
+      position: relative;
+      width: 44px;
+      height: 44px;
+      border-radius: 13px;
+      background: #050505;
+      display: block;
+      overflow: hidden;
+      box-shadow: 0 10px 24px rgba(16, 20, 25, 0.18);
+    }
+
+    .app-icon {
+      display: block;
+      width: 44px;
+      height: 44px;
+      border-radius: 13px;
+      object-fit: cover;
+      box-shadow: 0 10px 24px rgba(16, 20, 25, 0.18);
+    }
+
+    .hero-icon {
+      width: 96px;
+      height: 96px;
+      border-radius: 24px;
+      object-fit: cover;
+      box-shadow: 0 20px 45px rgba(16, 20, 25, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .hero-icon-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .hero-icon-row strong {
+      display: block;
+      font-size: 18px;
+      line-height: 1.3;
+    }
+
+    .hero-icon-row span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 3px;
+    }
+
+    .wave {
+      position: absolute;
+      left: 50%;
+      top: 9px;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      height: 26px;
+    }
+
+    .wave span {
+      display: block;
+      width: 3px;
+      border-radius: 99px;
+      background: #ff1f1f;
+    }
+
+    .wave span:nth-child(1) { height: 12px; }
+    .wave span:nth-child(2) { height: 22px; }
+    .wave span:nth-child(3) { height: 15px; }
+    .wave span:nth-child(4) { height: 28px; }
+    .wave span:nth-child(5) { height: 18px; }
+    .wave span:nth-child(6) { height: 13px; }
+
+    .screen-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 4px;
+    }
+
+    .screen-title strong {
+      display: block;
+      font-size: 17px;
+      line-height: 1.25;
+    }
+
+    .screen-title small {
+      color: var(--muted);
+      display: block;
+      margin-top: 2px;
+    }
+
+    .summary-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px;
+    }
+
+    .summary-card strong {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .summary-card p {
+      font-size: 13px;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      font-size: 12px;
+      color: var(--blue);
+      background: var(--blue-soft);
+      border-radius: 999px;
+      padding: 5px 9px;
+      font-weight: 700;
+    }
+
+    .meter {
+      height: 8px;
+      border-radius: 999px;
+      background: #e7ebf1;
+      overflow: hidden;
+    }
+
+    .meter span {
+      display: block;
+      width: 72%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--sky));
     }
 
     .box {
-      background:#f7f7f7;
-      border:1px solid #e5e5e5;
-      padding:16px;
-      border-radius:12px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      padding: 22px;
+      border-radius: 18px;
       margin: 20px 0;
+      box-shadow: 0 10px 34px rgba(37, 99, 235, 0.07);
+    }
+
+    .section {
+      margin-top: 28px;
+      padding: 28px;
+      border-radius: 22px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 34px rgba(37, 99, 235, 0.07);
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 12px;
+    }
+
+    .feature {
+      padding: 16px;
+      border-radius: 16px;
+      background: linear-gradient(180deg, #f7fbff, var(--soft));
+      border: 1px solid var(--line);
+    }
+
+    .feature strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .feature p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .steps {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+      display: grid;
+      gap: 10px;
+      counter-reset: steps;
+    }
+
+    .steps li {
+      position: relative;
+      margin: 0;
+      color: #333;
+      background: linear-gradient(180deg, #f7fbff, var(--soft));
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px 14px 14px 52px;
+      counter-increment: steps;
+    }
+
+    .steps li::before {
+      content: counter(steps);
+      position: absolute;
+      left: 14px;
+      top: 14px;
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    .plan-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin: 16px 0;
+    }
+
+    .plan {
+      position: relative;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      background: #fff;
+      box-shadow: 0 10px 34px rgba(37, 99, 235, 0.07);
+    }
+
+    .plan.highlight {
+      border-color: rgba(37, 99, 235, 0.36);
+      background: linear-gradient(180deg, #f7fbff, #edf5ff);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 4px 8px;
+      background: rgba(14, 165, 233, 0.13);
+      color: #075985;
+      font-size: 12px;
+      font-weight: 800;
+      margin-left: 6px;
+    }
+
+    .plan h3 {
+      font-size: 18px;
+      margin: 0 0 8px;
+    }
+
+    .plan ul {
+      padding-left: 18px;
+      margin: 0;
+    }
+
+    .plan li {
+      margin: 6px 0;
+      color: #333;
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 14px;
     }
 
     .note {
       margin-top: 28px;
       font-size: 12px;
-      color: #666;
+      color: var(--muted);
     }
 
     .page-nav {
-      max-width: 760px;
+      max-width: 1080px;
       margin: 0 auto;
-      padding: 16px 20px 0;
+      padding: 18px 20px 0;
       display: flex;
       gap: 8px;
       flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--ink);
+      font-weight: 800;
+      margin-right: auto;
     }
 
     .page-nav a {
       display: inline-block;
       padding: 8px 14px;
-      border: 1px solid #d8d8d8;
+      border: 1px solid var(--line);
       border-radius: 999px;
-      background: #f7f7f7;
-      color: #0b57d0;
+      background: #fff;
+      color: var(--accent-strong);
       text-decoration: none;
       font-size: 14px;
       line-height: 1.4;
     }
 
     .page-nav a:hover {
-      background: #eeeeee;
+      background: #eaf2ff;
       text-decoration: none;
     }
 
     .page-nav a.current {
-      background: #111;
+      background: var(--accent-strong);
       color: #fff;
-      border-color: #111;
+      border-color: var(--accent-strong);
+    }
+
+    .footer {
+      border-top: 1px solid var(--line);
+      margin-top: 30px;
+      padding-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 820px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .phone-card {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .wrap {
+        padding-inline: 14px;
+      }
+
+      .hero,
+      .section {
+        border-radius: 20px;
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: clamp(36px, 13vw, 52px);
+      }
+
+      .page-nav {
+        padding-inline: 14px;
+      }
+
+      .brand {
+        flex-basis: 100%;
+        margin-bottom: 4px;
+      }
     }
   </style>
 </head>
 
 <body>
   <nav class="page-nav" aria-label="ページナビゲーション">
+    <span class="brand">
+      <img class="app-icon" src="./CatchVoice_icon_1024.png" alt="" aria-hidden="true" />
+      CatchVoice
+    </span>
     <a class="current" href="./">トップ</a>
     <a href="./support/">サポート</a>
     <a href="./privacy/">プライバシー</a>
   </nav>
 
   <main class="wrap">
-    <h1>CatchVoice（キャッチボイス）</h1>
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">音声メモとAI振り返り</p>
+          <h1>CatchVoice</h1>
+          <p class="title-kana">キャッチボイス</p>
+          <p class="lead">
+            CatchVoiceは、話した内容をすばやく記録し、文字起こし・要約・振り返りに活用するための音声メモアプリです。
+          </p>
+          <p>
+            思いついたこと、考えたこと、今日の振り返り、仕事のメモなどを声で残すだけで、
+            日ごと・週ごと・月ごと・年ごとに整理できます。
+            単なる録音アプリではなく、話した内容をあとから見返しやすい形にまとめることを目的としています。
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="./support/">サポートを見る</a>
+            <a class="button secondary" href="./privacy/">プライバシーポリシー</a>
+          </div>
+        </div>
 
-    <p class="lead">
-      CatchVoiceは、話した内容をすばやく記録し、文字起こし・要約・振り返りに活用するための音声メモアプリです。
-    </p>
+        <div class="phone-card" aria-label="CatchVoiceの画面イメージ">
+          <div class="phone-screen">
+            <div class="hero-icon-row">
+              <img class="hero-icon" src="./CatchVoice_icon_1024.png" alt="CatchVoiceアプリアイコン" />
+              <div>
+                <strong>CatchVoice</strong>
+                <span>声を残して、あとから振り返る</span>
+              </div>
+            </div>
+            <div class="screen-title">
+              <span class="app-mark" aria-hidden="true">
+                <span class="wave"><span></span><span></span><span></span><span></span><span></span><span></span></span>
+              </span>
+              <div>
+                <strong>今日の振り返り</strong>
+                <small>録音から要約まで</small>
+              </div>
+            </div>
+            <div class="summary-card">
+              <strong>日ごとのまとめ</strong>
+              <p>話した内容を整理し、後から見返しやすい形で要点を残します。</p>
+            </div>
+            <div class="summary-card">
+              <strong>話題</strong>
+              <div class="tag-row">
+                <span class="tag">仕事メモ</span>
+                <span class="tag">振り返り</span>
+                <span class="tag">次の行動</span>
+              </div>
+            </div>
+            <div class="summary-card">
+              <strong>今月の要約回数</strong>
+              <div class="meter" aria-hidden="true"><span></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <p>
-      思いついたこと、考えたこと、今日の振り返り、仕事のメモなどを声で残すだけで、
-      日ごと・週ごと・月ごと・年ごとに整理できます。
-      単なる録音アプリではなく、話した内容をあとから見返しやすい形にまとめることを目的としています。
-    </p>
+    <section class="section">
+      <h2>主な機能</h2>
+      <div class="feature-grid">
+        <div class="feature">
+          <strong>音声の録音・保存</strong>
+          <p>思いついたことや日々の記録を、声ですばやく残せます。</p>
+        </div>
+        <div class="feature">
+          <strong>文字起こし</strong>
+          <p>録音内容をテキストとして確認し、後から読み返せます。</p>
+        </div>
+        <div class="feature">
+          <strong>AIによる要約</strong>
+          <p>要約、話題整理、キーワード抽出で記録を整理します。</p>
+        </div>
+        <div class="feature">
+          <strong>日・週・月・年の振り返り</strong>
+          <p>短いメモを積み上げ、期間ごとの流れとして見返せます。</p>
+        </div>
+      </div>
+    </section>
 
-    <div class="box">
-      <h2 style="margin-top:0;">主な機能</h2>
-      <ul>
-        <li>音声の録音・保存</li>
-        <li>録音内容の文字起こし</li>
-        <li>AIによる要約、話題整理、キーワード抽出</li>
-        <li>日ごとのまとめ</li>
-        <li>週ごと・月ごとの振り返り</li>
-        <li>年ごとのまとめ、ランキング、キーワード頻度の可視化</li>
-        <li>プランに応じたAI要約回数の利用</li>
-      </ul>
-    </div>
+    <section class="section">
+      <h2>基本的な使い方</h2>
+      <ol class="steps">
+        <li>録音ボタンを押して、思いついたことや振り返りを音声で記録します。</li>
+        <li>録音後、文字起こし結果を確認します。</li>
+        <li>必要に応じて、日ごとのまとめを作成します。</li>
+        <li>日ごとのまとめがあると、週ごと・月ごとの振り返りに活用できます。</li>
+        <li>Proプランでは、年ごとのまとめや未反映のまとめ更新を利用できます。</li>
+      </ol>
+    </section>
 
-    <h2>利用プランについて</h2>
-    <p>
-      CatchVoiceでは、無料プランに加えて、より多くのAI要約回数や週・月・年単位の整理機能を利用できる有料プランを提供しています。
-      スタンダードプランでは週ごと・月ごとのまとめを中心に利用でき、プロプランでは年ごとのまとめや一括要約など、より広い振り返り機能を利用できます。
-    </p>
+    <section class="section">
+      <h2>プランの違い</h2>
+      <p>
+        CatchVoiceでは、無料プランに加えて、より多くのAI要約回数や週・月・年単位の整理機能を利用できる有料プランを提供しています。
+      </p>
+      <div class="plan-grid" aria-label="プランの違い">
+        <section class="plan">
+          <h3>Free</h3>
+          <ul>
+            <li>録音と文字起こし</li>
+            <li>日ごとの確認</li>
+            <li>月3回までのAI要約</li>
+          </ul>
+        </section>
 
-    <h2>サポート・ポリシー</h2>
-    <ul>
-      <li><a href="./support/">サポートページ</a></li>
-      <li><a href="./privacy/">プライバシーポリシー</a></li>
-    </ul>
+        <section class="plan highlight">
+          <h3>Standard <span class="badge">おすすめ</span></h3>
+          <ul>
+            <li>週ごと・月ごとのまとめ</li>
+            <li>月ごとの頻出話題</li>
+            <li>月150回までのAI要約</li>
+          </ul>
+        </section>
 
-    <p class="note">
-      ※リンク先は GitHub Pages 上で公開されています。ブックマークする場合は各ページのURLをご利用ください。
-    </p>
+        <section class="plan">
+          <h3>Pro</h3>
+          <ul>
+            <li>Standardの全機能</li>
+            <li>年ごとのまとめ、ランキング、キーワード頻度の可視化</li>
+            <li>未反映のまとめ更新</li>
+            <li>月300回までのAI要約</li>
+          </ul>
+        </section>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>よくある確認事項</h2>
+      <div class="feature-grid">
+        <div class="feature">
+          <strong>追加の要約回数</strong>
+          <p>月間のAI要約回数を使い切った場合は、追加の要約回数を購入できます。</p>
+        </div>
+        <div class="feature">
+          <strong>バックアップと復元</strong>
+          <p>設定画面からバックアップを書き出したり、復元したりできます。</p>
+        </div>
+        <div class="feature">
+          <strong>オフライン時</strong>
+          <p>通信が復帰すると、サーバー上のプランや使用回数が再度同期されます。</p>
+        </div>
+        <div class="feature">
+          <strong>Apple Intelligence</strong>
+          <p>非対応端末では、Geminiによる要約をご利用ください。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>サポート・ポリシー</h2>
+      <p class="muted">
+        不具合やご質問がある場合は、サポートページをご確認ください。
+      </p>
+      <div class="hero-actions">
+        <a class="button primary" href="./support/">サポートページ</a>
+        <a class="button secondary" href="./privacy/">プライバシーポリシー</a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>CatchVoice</span>
+      <span>※リンク先は GitHub Pages 上で公開されています。</span>
+    </footer>
   </main>
 </body>
 </html>

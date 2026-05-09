@@ -884,6 +884,17 @@
       background: linear-gradient(180deg, #f5f9ff 0%, #eef6ff 100%);
     }
 
+    body.page-privacy .page-nav {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 18px 20px 0;
+    }
+
+    body.page-privacy .brand {
+      gap: 10px;
+      margin-right: auto;
+    }
+
     body.page-privacy h1 {
       max-width: 760px;
       white-space: normal;

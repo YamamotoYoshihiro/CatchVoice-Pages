@@ -9,6 +9,35 @@
   <link rel="apple-touch-icon" href="../assets/CatchVoice_icon_1024.png" />
   <link rel="alternate" hreflang="ja" href="https://yamamotoyoshihiro.github.io/CatchVoice-Pages/privacy/" />
   <link rel="alternate" hreflang="en" href="https://yamamotoyoshihiro.github.io/CatchVoice-Pages/privacy/en/" />
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var explicitLanguage = params.get("lang");
+
+      if (explicitLanguage === "ja" || explicitLanguage === "en") {
+        try {
+          localStorage.setItem("catchvoicePrivacyLanguage", explicitLanguage);
+        } catch (_) {}
+      }
+
+      var savedLanguage = null;
+      try {
+        savedLanguage = localStorage.getItem("catchvoicePrivacyLanguage");
+      } catch (_) {}
+
+      var browserLanguage = (
+        navigator.languages && navigator.languages.length > 0
+          ? navigator.languages[0]
+          : navigator.language || ""
+      ).toLowerCase();
+
+      var targetLanguage = explicitLanguage || savedLanguage || (browserLanguage.indexOf("ja") === 0 ? "ja" : "en");
+
+      if (targetLanguage === "en") {
+        window.location.replace("./en/");
+      }
+    })();
+  </script>
 </head>
 
 <body class="page-privacy">
@@ -37,7 +66,7 @@
           <div class="button-row">
             <a class="button primary" href="mailto:yoshihiro.app@gmail.com">お問い合わせ</a>
             <a class="button secondary" href="../support/">サポートページ</a>
-            <a class="button secondary" href="./en/" hreflang="en" lang="en">English</a>
+            <a class="button secondary" href="./en/?lang=en" hreflang="en" lang="en">English</a>
           </div>
         </div>
 

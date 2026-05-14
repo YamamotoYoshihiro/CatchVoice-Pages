@@ -9,6 +9,22 @@
   <link rel="apple-touch-icon" href="../../assets/CatchVoice_icon_1024.png" />
   <link rel="alternate" hreflang="ja" href="https://yamamotoyoshihiro.github.io/CatchVoice-Pages/privacy/" />
   <link rel="alternate" hreflang="en" href="https://yamamotoyoshihiro.github.io/CatchVoice-Pages/privacy/en/" />
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var explicitLanguage = params.get("lang");
+
+      if (explicitLanguage === "ja" || explicitLanguage === "en") {
+        try {
+          localStorage.setItem("catchvoicePrivacyLanguage", explicitLanguage);
+        } catch (_) {}
+      }
+
+      if (explicitLanguage === "ja") {
+        window.location.replace("../?lang=ja");
+      }
+    })();
+  </script>
 </head>
 
 <body class="page-privacy">
@@ -37,7 +53,7 @@
           <div class="button-row">
             <a class="button primary" href="mailto:yoshihiro.app@gmail.com">Contact</a>
             <a class="button secondary" href="../../support/">Support</a>
-            <a class="button secondary" href="../" hreflang="ja" lang="ja">Japanese</a>
+            <a class="button secondary" href="../?lang=ja" hreflang="ja" lang="ja">Japanese</a>
           </div>
         </div>
 
